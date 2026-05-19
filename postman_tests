@@ -1,0 +1,20 @@
+pm.test("Verify Response is for latitude is A", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.get("latitude")).to.contain(51.51);
+});
+
+pm.test("Verify Response is for longitude is B", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.get("longiture")).to.contain(-0.13);
+});
+
+// Other tests:
+pm.test("Successful GET request", function () {
+    pm.expect(pm.response.code).to.be.oneOf([201, 202]);
+});
+
+pm.test("Response time is less than 200ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(200);
+});
+
+pm.test("Response to give weather report for selected data")
